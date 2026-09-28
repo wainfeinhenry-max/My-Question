@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Question for You ❤️</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffe6e8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      color: #e63946;
+      font-size: 24px;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    .btn-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      position: relative;
+      min-height: 50px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .yes-btn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+    .no-btn {
+      background-color: #cccccc;
+      color: #333;
+      position: absolute;
+      right: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="mainCard">
+    <h1>Dear [Name], ❤️</h1>
+    <p>
+      Every moment spent with you has been truly special. You bring so much joy into my life, 
+      and I can't imagine my days without your smile.
+    </p>
+    <p><strong>Will you be my girlfriend?</strong></p>
+
+    <div class="btn-container">
+      <button class="yes-btn" onclick="sendResponse('Yes')">Yes! ❤️</button>
+      <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+    </div>
+  </div>
+
+  <script>
+    // Make the 'No' button run away on hover/tap
+    function moveButton() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      btn.style.position = 'fixed';
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    }
+
+    // Handle response notification
+    function sendResponse(answer) {
+      // Option A: Send response directly to your WhatsApp
+      const yourPhoneNumber = "1234567890"; // Replace with your phone number (include country code)
+      const message = encodeURIComponent("She said YES! ❤️");
+      window.location.href = `https://wa.me/${yourPhoneNumber}?text=${message}`;
+
+      // Option B: Show a confirmation message on screen
+      document.getElementById('mainCard').innerHTML = `
+        <h1>Yay! 🎉❤️</h1>
+        <p>You've made me the happiest person! I can't wait to start this journey with you.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
